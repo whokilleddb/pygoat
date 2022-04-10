@@ -1,7 +1,0 @@
-README.md
-setup.py
-pygoat.egg-info/PKG-INFO
-pygoat.egg-info/SOURCES.txt
-pygoat.egg-info/dependency_links.txt
-pygoat.egg-info/requires.txt
-pygoat.egg-info/top_level.txt
