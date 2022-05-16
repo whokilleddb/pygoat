@@ -14,17 +14,21 @@ RUN apt-get update && apt-get install --no-install-recommends -y dnsutils=1:9.11
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+
 # Install dependencies
 RUN python -m pip install --no-cache-dir pip==22.0.4
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+
 # copy project
 COPY . /app/
+
 
 # install pygoat
 EXPOSE 8000
 
+
 RUN python3 /app/pygoat/manage.py migrate
 WORKDIR /app/pygoat/
-CMD ["gunicorn", "--bind" ,"0.0.0.0:8000", "--workers","6", "pygoat.wsgi"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers","6", "pygoat.wsgi"]
